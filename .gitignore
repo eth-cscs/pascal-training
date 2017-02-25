@@ -44,15 +44,3 @@ hist
 *.ptx
 *.MOD
 *.mod
-
-# latex cruft
-*.aux
-*.log
-*.pdf
-*.vrb
-*.nav
-*.snm
-*.toc
-
-node_raw.tex
-node_managed_raw.tex
