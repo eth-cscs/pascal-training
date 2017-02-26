@@ -24,7 +24,6 @@ blur
 blur_twice_omp
 *.cuda
 *.omp
-axpy
 axpy_omp
 newton
 hist
