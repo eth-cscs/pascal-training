@@ -27,6 +27,8 @@ blur_twice_omp
 axpy_omp
 newton
 hist
+diffusion2d
+diffusion2d_mpi
 
 # visualization output files
 *.bin
