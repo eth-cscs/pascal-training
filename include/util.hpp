@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <cmath>
+#include <iostream>
 #include <mutex>
 
 #ifndef NO_CUDA
@@ -84,20 +85,16 @@ T* malloc_pinned(size_t N, T value=T()) {
 // copying memory
 ///////////////////////////////////////////////////////////////////////////////
 
-// TODO : fill in the host<->device copy routines
-
 // copy n*T from host to device
 template <typename T>
 void copy_to_device(T* from, T* to, size_t n) {
-    auto status = cudaMemcpy(to, from, n*sizeof(T), cudaMemcpyDefault);
-    cuda_check_status(status);
+    cudaMemcpy(to, from, n*sizeof(T), cudaMemcpyHostToDevice);
 }
 
 // copy n*T from device to host
 template <typename T>
 void copy_to_host(T* from, T* to, size_t n) {
-    auto status = cudaMemcpy(to, from, n*sizeof(T), cudaMemcpyDefault);
-    cuda_check_status(status);
+    cudaMemcpy(to, from, n*sizeof(T), cudaMemcpyDeviceToHost);
 }
 
 // copy n*T from host to device

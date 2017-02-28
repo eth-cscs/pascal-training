@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#SBATCH --nodes=16
+#SBATCH --output=job%j.out
+#SBATCH --reservation=Pascal2day
+#SBATCH --time=00:05:00
+#SBATCH --constraint=gpu
+
+export MPICH_RDMA_ENABLED_CUDA=1
+for ranks in 1 2 4 8 16
+do
+    srun -n$ranks -N$ranks  diffusion2d_mpi 17 10000 | grep '##'
+done
